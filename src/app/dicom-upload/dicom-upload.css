@@ -1,0 +1,41 @@
+
+body{
+   height: 100vh;
+  background: #282626;
+
+}
+.upload-wrapper {
+  background: #282626;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.upload-area {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  display: inline-block;
+  margin-top: 20px;
+  width: 250px;
+}
+
+.navbar{
+    background-color: #17325C;
+    border-radius: 0;
+}
+
+.navbar-brand{
+    color: white !important;
+    font-size: 2rem !important;
+}
+
+button{
+  background-color: #10467a;
+  color: azure;
+}
+
+.logo {
+    width: 40px;
+    margin: 4px;
+}

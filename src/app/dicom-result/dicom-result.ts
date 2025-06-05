@@ -23,7 +23,7 @@ export class DicomResult implements AfterViewInit {
       cornerstoneWADOImageLoader.configure({});
 
       cornerstoneWADOImageLoader.webWorkerManager.initialize({
-        webWorkerPath: 'assets/cornerstoneWADOImageLoaderWebWorker.bundle.min.js',
+        webWorkerPath: 'assets/cornerstoneWADOImageLoaderWebWorkers.bundle.min.js',
         taskConfiguration: {
           decodeTask: {}
         }
@@ -34,15 +34,26 @@ export class DicomResult implements AfterViewInit {
   }
 
   onFileChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (!input.files?.length) return;
+  const input = event.target as HTMLInputElement;
+  if (!input.files?.length) return;
 
-    const file = input.files[0];
+  const file = input.files[0];
+  console.log("Selected file:", file);
+
+  try {
     const imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(file);
     const element = document.getElementById('dicomImage')!;
+    console.log("Loading image:", imageId);
 
     cornerstone.loadImage(imageId).then((image: any) => {
       cornerstone.displayImage(element, image);
-    }).catch((err: any) => console.error("Failed to display image", err));
+      console.log("Image displayed");
+    }).catch((err: any) => {
+      console.error("Cornerstone loadImage failed:", err);
+    });
+  } catch (err) {
+    console.error("Error adding file to fileManager:", err);
   }
+}
+
 }

@@ -19,6 +19,7 @@ export class DicomResult implements AfterViewInit {
       const element = document.getElementById('dicomImage')!;
       cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
       cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
+
       cornerstoneWADOImageLoader.configure({});
 
       cornerstoneWADOImageLoader.webWorkerManager.initialize({
